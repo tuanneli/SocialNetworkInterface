@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useState } from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Nav from "./components/Nav/Nav";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./components/MainContent/Profile/Profile";
+import Messages from "./components/MainContent/Messages/Messages";
+import News from "./components/MainContent/News/News";
+import Music from "./components/MainContent/Music/Music";
+import Settings from "./components/MainContent/Settings/Settings";
+import Friends from "./components/MainContent/Friends/Friends";
 
-function App() {
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-wrapper">
+      <Header />
+      <Nav state={props.state.friendsPage} />
+      <div className="main-content">
+        <Routes>
+          <Route
+            path="/Profile"
+            element={
+              <Profile
+                state={props.state.profilePage}
+                addPost={props.addPost}
+                updateNewPostText={props.updateNewPostText}
+              />
+            }
+          />
+          <Route
+            path="/Messages/*"
+            element={
+              <Messages
+                state={props.state.messagesPage}
+                addMessage={props.addMessage}
+                updateNewMessageText={props.updateNewMessageText}
+              />
+            }
+          />
+          <Route path="/News" element={<News />} />
+          <Route path="/Music" element={<Music />} />
+          <Route path="/Settings" element={<Settings />} />
+          <Route path="/Friends" element={<Friends />} />
+        </Routes>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

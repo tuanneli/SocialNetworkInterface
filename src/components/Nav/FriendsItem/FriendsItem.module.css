@@ -1,0 +1,16 @@
+.friends {
+  font-size: 20px;
+  color: rgb(195 180 180);
+  font-family: "Roboto Mono", monospace;
+  margin-bottom: 1em;
+}
+
+.friends a {
+  color: rgb(230, 212, 212);
+}
+
+.friends img {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+}

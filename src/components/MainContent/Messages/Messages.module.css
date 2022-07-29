@@ -1,0 +1,58 @@
+.page {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100%;
+}
+
+.messages {
+  width: 94%;
+  height: 98%;
+  background-color: white;
+  border-radius: 1em;
+  border: 1px solid;
+  margin: 7px;
+  padding-left: 3%;
+}
+
+.dialogs {
+  width: 94%;
+  height: 98%;
+  background-color: rgb(6 66 126);
+  border-radius: 1em;
+  border: 1px solid;
+  margin: 7px;
+  padding-left: 3%;
+}
+
+.dialogHeader {
+  background-color: white;
+  margin-left: -3%;
+  border-top-left-radius: 0.9em;
+  border-top-right-radius: 0.9em;
+}
+
+.dialogHeader h1 {
+  margin: 0;
+  display: grid;
+  justify-content: center;
+  height: 2em;
+  align-content: center;
+  margin-bottom: 1em;
+}
+
+.messagesHeder {
+  background-color: rgb(6 66 126);
+  margin-left: -3.2%;
+  border-top-left-radius: 0.9em;
+  border-top-right-radius: 0.9em;
+}
+
+.messagesHeder h1 {
+  margin: 0;
+  display: grid;
+  justify-content: center;
+  height: 2em;
+  align-content: center;
+  margin-bottom: 1em;
+}

@@ -1,0 +1,20 @@
+.dialog {
+  font-size: 20px;
+  font-family: "Gill Sans MT";
+  margin-bottom: 1em;
+  color: white;
+}
+
+.dialog a {
+  color: rgb(230, 212, 212);
+}
+
+.dialog img {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+}
+
+/* .dialogHeader {
+  background-color: white;
+} */
