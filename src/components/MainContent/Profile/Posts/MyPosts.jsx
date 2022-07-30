@@ -16,6 +16,7 @@ const MyPosts = (props) => {
     }),
   ];
 
+
   let newPostElement = React.createRef();
 
   const addPost = () => {
