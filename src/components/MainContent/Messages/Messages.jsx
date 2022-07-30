@@ -21,25 +21,16 @@ const Messages = (props) => {
     return <Message message={messageItem.message} id={messageItem.id} />;
   });
 
-  // const DrawDialogs = (props) => {
-  //   return (
-  //     <div className={classes.dialogs}>
-  //       <div className={classes.dialogHeader}>
-  //         <h1>Dialogs</h1>
-  //       </div>
-  //       {props.dialogElements}
-  //     </div>
-  //   );
-  // };
-
   return (
     <div className={classes.page}>
       <DrawDialogs dialogElements={dialogElements} />
       <DrawMessages
         messagesElements={messagesElements}
         state={props.state}
-        addMessage={props.addMessage}
-        updateNewMessageText={props.updateNewMessageText}
+
+        // addMessage={props.addMessage}
+        // updateNewMessageText={props.updateNewMessageText}
+        dispatch={props.dispatch}
       />
     </div>
   );

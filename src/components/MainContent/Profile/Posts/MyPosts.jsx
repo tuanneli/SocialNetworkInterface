@@ -1,7 +1,7 @@
 import React from "react";
-// import "./../../App.css";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
   let postElements = [
@@ -19,14 +19,12 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    // let text = newPostElement.current.value;
-    // newPostElement.current.value = "";
-    props.addPost();
+    props.dispatch(addPostActionCreator());
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    props.dispatch(updateNewPostTextActionCreator(text));
   };
 
   return (

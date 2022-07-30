@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, {useRef, useState} from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Profile from "./components/MainContent/Profile/Profile";
 import Messages from "./components/MainContent/Messages/Messages";
 import News from "./components/MainContent/News/News";
@@ -13,8 +13,8 @@ import Friends from "./components/MainContent/Friends/Friends";
 const App = (props) => {
   return (
     <div className="app-wrapper">
-      <Header />
-      <Nav state={props.state.friendsPage} />
+      <Header/>
+      <Nav state={props.state.friendsPage}/>
       <div className="main-content">
         <Routes>
           <Route
@@ -22,8 +22,9 @@ const App = (props) => {
             element={
               <Profile
                 state={props.state.profilePage}
-                addPost={props.addPost}
-                updateNewPostText={props.updateNewPostText}
+                dispatch={props.dispatch}
+                // addPost={props.addPost}
+                // updateNewPostText={props.updateNewPostText}
               />
             }
           />
@@ -32,15 +33,16 @@ const App = (props) => {
             element={
               <Messages
                 state={props.state.messagesPage}
-                addMessage={props.addMessage}
-                updateNewMessageText={props.updateNewMessageText}
+                dispatch={props.dispatch}
+                // addMessage={props.addMessage}
+                // updateNewMessageText={props.updateNewMessageText}
               />
             }
           />
-          <Route path="/News" element={<News />} />
-          <Route path="/Music" element={<Music />} />
-          <Route path="/Settings" element={<Settings />} />
-          <Route path="/Friends" element={<Friends />} />
+          <Route path="/News" element={<News/>}/>
+          <Route path="/Music" element={<Music/>}/>
+          <Route path="/Settings" element={<Settings/>}/>
+          <Route path="/Friends" element={<Friends/>}/>
         </Routes>
       </div>
     </div>
