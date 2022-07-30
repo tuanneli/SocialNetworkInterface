@@ -3,7 +3,17 @@ import {parseCSS} from "@testing-library/jest-dom/dist/utils";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
-const profileReducer = (state, action) => {
+const initialState = {
+  postData: [
+    {id: 1, message: "Hi how are you?", likes: "5"},
+    {id: 2, message: "Hables español?", likes: "8"},
+    {id: 3, message: "O solo ingles?", likes: "11"},
+  ],
+  newPostText: "",
+}
+
+
+const profileReducer = (state = initialState, action) => {
   if (action.type === ADD_POST) {
     {
       const newPost = {

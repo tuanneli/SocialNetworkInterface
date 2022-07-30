@@ -41,7 +41,7 @@ export const store = {
         },
       ],
     },
-    friendsPage: {
+    sidebarPage: {
       friendsData: [
         {
           name: "Kolya",
