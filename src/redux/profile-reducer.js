@@ -12,22 +12,28 @@ const initialState = {
   newPostText: "",
 }
 
-
 const profileReducer = (state = initialState, action) => {
-  if (action.type === ADD_POST) {
-    {
-      const newPost = {
+  switch (action.type) {
+    case ADD_POST: {
+      let newPost = {
         id: 4,
         message: state.newPostText,
         likes: 0,
       };
-      state.postData.push(newPost);
-      state.newPostText = "";
+      return {
+        ...state,
+        postData: [...state.postData, newPost],
+        newPostText: ""
+      }
     }
-  } else if (action.type === UPDATE_NEW_POST_TEXT) {
-    state.newPostText = action.newPostText;
+    case UPDATE_NEW_POST_TEXT:
+      return {
+        ...state,
+        newPostText: action.newPostText,
+      }
+    default:
+      return state;
   }
-  return state;
 }
 export const addPostActionCreator = () => {
   return {type: ADD_POST};
@@ -35,6 +41,5 @@ export const addPostActionCreator = () => {
 export const updateNewPostTextActionCreator = (text) => {
   return {type: UPDATE_NEW_POST_TEXT, newPostText: text};
 }
-
 
 export default profileReducer;

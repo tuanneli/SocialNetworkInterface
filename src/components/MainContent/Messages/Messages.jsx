@@ -1,13 +1,14 @@
 import React from "react";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import DrawMessages from "./DrawMessages/DrawMessages";
 import Message from "./DrawMessages/Message/Message";
 import classes from "./Messages.module.css";
 import UserName from "./DrawDialogs/UserName/UserName";
 import DrawDialogs from "./DrawDialogs/DrawDialogs";
+import DrawMessagesContainer from "./DrawMessages/DrawMessagesContainer";
 
 const Messages = (props) => {
-  let dialogElements = props.state.dialogsData.map((dialog) => {
+  const state = props.store.getState().messagesPage;
+
+  let dialogElements = state.dialogsData.map((dialog) => {
     return (
       <UserName
         name={dialog.name}
@@ -17,20 +18,11 @@ const Messages = (props) => {
     );
   });
 
-  let messagesElements = props.state.messagesData.map((messageItem) => {
-    return <Message message={messageItem.message} id={messageItem.id} />;
-  });
-
   return (
     <div className={classes.page}>
-      <DrawDialogs dialogElements={dialogElements} />
-      <DrawMessages
-        messagesElements={messagesElements}
-        state={props.state}
-
-        // addMessage={props.addMessage}
-        // updateNewMessageText={props.updateNewMessageText}
-        dispatch={props.dispatch}
+      <DrawDialogs dialogElements={dialogElements}/>
+      <DrawMessagesContainer
+        // store={props.store}
       />
     </div>
   );

@@ -31,19 +31,30 @@ const initialState = {
 }
 
 const messagesReducer = (state = initialState, action) => {
-  if (action.type === ADD_MESSAGE) {
-    {
-      const newMessage = {
+
+  switch (action.type) {
+    case ADD_MESSAGE: {
+      let newMessage = {
         message: state.newMessageText,
         id: 4,
       };
-      state.messagesData.push(newMessage);
-      state.newMessageText = "";
+      return {
+        ...state,
+        messagesData: [...state.messagesData, newMessage],
+        newMessageText: "",
+      };
+      // stateCopy.messagesData = [...state.messagesData];
+      // stateCopy.messagesData.push(newMessage);
+      // stateCopy.newMessageText = "";
     }
-  } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-    state.newMessageText = action.newMessageText;
+    case UPDATE_NEW_MESSAGE_TEXT:
+      return {
+        ...state,
+        newMessageText: action.newMessageText,
+      };
+    default:
+      return state;
   }
-  return state;
 }
 
 export const updateNewMessageTextActionCreator = (text) => {

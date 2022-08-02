@@ -2,24 +2,24 @@ import React from "react";
 import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
 import Message from "./Message/Message";
 import classes from "./DrawMessages.module.css";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../redux/messages-reducer";
 
 const DrawMessages = (props) => {
-  // let newMessage = React.createRef();
+  let messagesElements = props.messagesData.map((messageItem) => {
+    return <Message message={messageItem.message} id={messageItem.id}/>;
+  });
 
   const addMessage = () => {
-    // let text = newMessage.current.value;
-    // newMessage.current.value = "";
-    // props.addMessage();
-    props.dispatch(addMessageActionCreator())
+    props.addMessage();
   };
 
+  let newMessageElement = React.createRef();
+
   const onMessageChange = (event) => {
-    // let text = newMessage.current.value;
     let text = event.target.value;
-    // props.updateNewMessageText(text);
-    props.dispatch(updateNewMessageTextActionCreator(text))
+    // let text = newMessageElement.current.value;
+    props.onMessageChange(text);
   };
+
   return (
     <div className={classes.messages}>
       <div className={classes.messagesHeder}>
@@ -27,14 +27,14 @@ const DrawMessages = (props) => {
       </div>
       <div className={classes.dialogWindow}>
         <h1 style={{textAlign: "center"}}>No messages Yet</h1>
-        {props.messagesElements}
+        {messagesElements}
       </div>
       <div className={classes.writeMessage}>
         <div>
           <input
-            // ref={newMessage}
+            ref={newMessageElement}
             onChange={onMessageChange}
-            value={props.state.newMessageText}
+            value={props.newMessageText}
             placeholder="Message"
           />
         </div>

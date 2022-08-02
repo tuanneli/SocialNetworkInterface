@@ -9,22 +9,20 @@ import News from "./components/MainContent/News/News";
 import Music from "./components/MainContent/Music/Music";
 import Settings from "./components/MainContent/Settings/Settings";
 import Friends from "./components/MainContent/Friends/Friends";
+import UsersContainer from "./components/MainContent/FindUsers/UsersContainer";
 
 const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header/>
-      <Nav state={props.state.sidebarPage}/>
+      <Nav state={props.store.getState().sidebarPage}/>
       <div className="main-content">
         <Routes>
           <Route
             path="/Profile"
             element={
               <Profile
-                state={props.state.profilePage}
-                dispatch={props.dispatch}
-                // addPost={props.addPost}
-                // updateNewPostText={props.updateNewPostText}
+                store={props.store}
               />
             }
           />
@@ -32,16 +30,14 @@ const App = (props) => {
             path="/Messages/*"
             element={
               <Messages
-                state={props.state.messagesPage}
-                dispatch={props.dispatch}
-                // addMessage={props.addMessage}
-                // updateNewMessageText={props.updateNewMessageText}
+                store={props.store}
               />
             }
           />
           <Route path="/News" element={<News/>}/>
           <Route path="/Music" element={<Music/>}/>
           <Route path="/Settings" element={<Settings/>}/>
+          <Route path="/Users" element={<UsersContainer/>}/>
           <Route path="/Friends" element={<Friends/>}/>
         </Routes>
       </div>

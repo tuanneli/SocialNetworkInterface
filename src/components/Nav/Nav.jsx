@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import FriendsItem from "./FriendsItem/FriendsItem";
 import classes from "./Nav.module.css";
 
@@ -14,15 +14,16 @@ const Nav = (props) => {
     );
   });
 
-  const NavbarComandsList = [
+  const NavbarCommandsList = [
     "Profile",
     "Messages",
     "News",
     "Music",
     "Settings",
+    "Users",
   ];
 
-  const NavbarComands = NavbarComandsList.map((NavbarData) => {
+  const NavbarCommands = NavbarCommandsList.map((NavbarData) => {
     let path = "/" + NavbarData;
     return (
       <div className={classes.item}>
@@ -32,7 +33,7 @@ const Nav = (props) => {
             navData.isActive ? classes.active : classes.item
           }
         >
-          {NavbarData}
+          {NavbarData === 'Users' ? 'Find Users' : NavbarData}
         </NavLink>
       </div>
     );
@@ -41,7 +42,7 @@ const Nav = (props) => {
   return (
     <nav className={classes.nav}>
       <div className={classes.references}>
-        {NavbarComands}
+        {NavbarCommands}
         <div className={classes.item}>
           <NavLink
             className={(navData) =>
