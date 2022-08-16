@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Desktop/API/.idea/API.iml" filepath="$PROJECT_DIR$/../Desktop/API/.idea/API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Desktop/DragAndDrop/.idea/DragAndDrop.iml" filepath="$PROJECT_DIR$/../Desktop/DragAndDrop/.idea/DragAndDrop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Desktop/Simple Todo list/.idea/Simple Todo list.iml" filepath="$PROJECT_DIR$/../Desktop/Simple Todo list/.idea/Simple Todo list.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SocialNetworkInterface.iml" filepath="$PROJECT_DIR$/.idea/SocialNetworkInterface.iml" />
     </modules>
   </component>

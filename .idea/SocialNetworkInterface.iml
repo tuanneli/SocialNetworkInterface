@@ -8,5 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="API" />
+    <orderEntry type="module" module-name="Simple Todo list" />
+    <orderEntry type="module" module-name="DragAndDrop" />
   </component>
 </module>
