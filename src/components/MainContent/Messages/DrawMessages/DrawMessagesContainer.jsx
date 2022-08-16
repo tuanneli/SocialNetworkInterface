@@ -10,19 +10,21 @@ const mapStateMessages = (state) => {
   return {
     messagesData: state.messagesPage.messagesData,
     newMessageText: state.messagesPage.newMessageText,
+    // isAuth: state.auth.isAuth
   }
 }
 
 const mapDispatchMessages = (dispatch) => {
   return {
-    addMessage: () => {
-      dispatch(addMessageActionCreator())
+    addMessage: (newMessageBody) => {
+      dispatch(addMessageActionCreator(newMessageBody))
     },
     onMessageChange: (text) => {
       dispatch(updateNewMessageTextActionCreator(text))
     },
   }
 }
-const DrawMessagesContainer = connect(mapStateMessages, mapDispatchMessages)(DrawMessages);
+const DrawMessagesContainer = connect(mapStateMessages, mapDispatchMessages)(
+  DrawMessages);
 
 export default DrawMessagesContainer;

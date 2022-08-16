@@ -2,3 +2,15 @@
     width: 7em;
     height: 7em;
 }
+
+.pageNumbers {
+    width: 10%;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    margin: 1em;
+}
+
+.selectedPage {
+    font-weight: bold;
+}

@@ -1,23 +1,17 @@
 import React from "react";
-import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
 import Message from "./Message/Message";
 import classes from "./DrawMessages.module.css";
+import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../../../common/FormsControl/FormsControl";
+import {maxLengthCreator, required} from "../../../../validator/validator";
 
 const DrawMessages = (props) => {
   let messagesElements = props.messagesData.map((messageItem) => {
     return <Message message={messageItem.message} id={messageItem.id}/>;
   });
 
-  const addMessage = () => {
-    props.addMessage();
-  };
-
-  let newMessageElement = React.createRef();
-
-  const onMessageChange = (event) => {
-    let text = event.target.value;
-    // let text = newMessageElement.current.value;
-    props.onMessageChange(text);
+  const addNewMessage = (values) => {
+    props.addMessage(values.newMessageBody);
   };
 
   return (
@@ -29,21 +23,30 @@ const DrawMessages = (props) => {
         <h1 style={{textAlign: "center"}}>No messages Yet</h1>
         {messagesElements}
       </div>
-      <div className={classes.writeMessage}>
-        <div>
-          <input
-            ref={newMessageElement}
-            onChange={onMessageChange}
-            value={props.newMessageText}
-            placeholder="Message"
-          />
-        </div>
-        <div>
-          <button onClick={addMessage}>Send</button>
-        </div>
-      </div>
+      <AddMessageFormRedux onSubmit={addNewMessage}/>
     </div>
   );
 };
+
+const maxLength120 = maxLengthCreator(120);
+
+const AddMessageForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field component={Textarea} name={"newMessageBody"}
+               placeholder="Message"
+               validate={[required, maxLength120]}
+        />
+      </div>
+      <div>
+        <button>Send</button>
+      </div>
+    </form>
+  )
+}
+
+const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm'})(
+  AddMessageForm);
 
 export default DrawMessages;
